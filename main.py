@@ -24,6 +24,9 @@ def main():
     print('Cross neighbors')
     print(cross)
 
+    diamond = node.findNeighbors(m = 3, ntype='DIAMOND', x = 3, y = 3)
+    print('Diamond neighbors')
+    print(diamond)
 
 
 if __name__ == '__main__':

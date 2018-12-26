@@ -96,6 +96,18 @@ class NeighboringNodes(object):
                 if self.isOnGrid(x, y + j):
                      neighbors.append(self.grid[x][y+j].getXYCoords())
 
+        elif ntype == 'DIAMOND':
+
+            for i in range (-1 * m, m+1):
+                for j in range(-1 * m, m+1):
+                        # manhattan of point equals radius
+                        if abs(i) + abs(j) <=m:
+                            # don't add origin to neighbors
+                            if i == 0 and j == 0:
+                                continue
+                            if self.isOnGrid(x + i, y + j):
+                                neighbors.append(self.grid[x+i][y+j].getXYCoords())
+
         return neighbors
 
 
