@@ -23,7 +23,7 @@ class NeighboringNodes(object):
         if self.debug == True:
             for i in range (self.size):
                 for j in range (self.size):
-                    print (self.grid[i][j].getValues())
+                    print (self.grid[i][j].get_values())
 
 
     def find_index(self, index):
@@ -31,7 +31,7 @@ class NeighboringNodes(object):
             raise ValueError("Index out of range")
 
         # flatten array and return index
-        return np.reshape(self.grid, (-1,))[index-1].getXYCoords()
+        return np.reshape(self.grid, (-1,))[index-1].get_xy_coords()
 
     def is_on_grid(self, x, y):
         if x < 0  or x >= self.size or y < 0 or y >= self.size:
@@ -59,7 +59,7 @@ class NeighboringNodes(object):
             x, y = self.findIndex(i)
 
         # if coord is not on grid then throw error
-        if not self.isOnGrid(x,y):
+        if not self.is_on_grid(x,y):
             raise ValueError("Coordinates not in grid")
 
 
@@ -71,8 +71,8 @@ class NeighboringNodes(object):
                 for j in range(-1 * m, m + 1):
                     if i == 0 and j == 0:
                         continue
-                    if self.isOnGrid(x+i,y+j):
-                        neighbors.append(self.grid[x + i][y + j].getXYCoords())
+                    if self.is_on_grid(x+i,y+j):
+                        neighbors.append(self.grid[x + i][y + j].get_xy_coords())
 
 
         elif ntype == 'CROSS':
@@ -82,10 +82,10 @@ class NeighboringNodes(object):
 
                 if i == 0:
                     continue
-                if self.isOnGrid(x + i, y):
-                    neighbors.append(self.grid[x+i][y].getXYCoords())
-                if self.isOnGrid(x, y + i):
-                     neighbors.append(self.grid[x][y+i].getXYCoords())
+                if self.is_on_grid(x + i, y):
+                    neighbors.append(self.grid[x+i][y].get_xy_coords())
+                if self.is_on_grid(x, y + i):
+                     neighbors.append(self.grid[x][y+i].get_xy_coords())
 
 
         elif ntype == 'DIAMOND':
@@ -97,8 +97,8 @@ class NeighboringNodes(object):
                             # don't add origin to neighbors
                             if i == 0 and j == 0:
                                 continue
-                            if self.isOnGrid(x + i, y + j):
-                                neighbors.append(self.grid[x+i][y+j].getXYCoords())
+                            if self.is_on_grid(x + i, y + j):
+                                neighbors.append(self.grid[x+i][y+j].get_xy_coords())
 
         return neighbors
 
