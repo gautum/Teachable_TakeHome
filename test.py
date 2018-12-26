@@ -11,11 +11,11 @@ class TestNodes(unittest.TestCase):
 
     def test_building_incorrect(self):
         node = NN.NeighboringNodes(2, True)
-        node.build_grid()
+        self.assertRaises(ValueError, node.build_grid)
 
     def test_square_center_coord(self):
         node = NN.NeighboringNodes(5,False)
-        node.buildGrid()
+        node.build_grid()
         expected_neighbors = [(1,1),(2,1),(3,1), (1,2), (3,2), (1,3), (2,3), (3,3)]
         self.assertEqual(expected_neighbors, node.find_neighbors(m=1, ntype='SQUARE', x=2, y=2))
 
@@ -36,4 +36,4 @@ class TestNodes(unittest.TestCase):
         node = NN.NeighboringNodes(5, False)
         node.build_grid()
 
-        self.assertRaises(ValueError, node.findNeighbors, 2, ntype = 'DIAMOND', i = 2)
+        self.assertRaises(ValueError, node.find_neighbors, 2, ntype = 'DIAMOND', i = 30)

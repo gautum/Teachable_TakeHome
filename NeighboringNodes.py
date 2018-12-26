@@ -25,6 +25,7 @@ class NeighboringNodes(object):
         self.grid = [[Node(i,j,counter.next()) for i in range (self.size)] for j in range(self.size)]
 
         if self.debug == True:
+            # print each for readability
             for i in range (self.size):
                 for j in range (self.size):
                     print (self.grid[i][j].get_values())
@@ -68,7 +69,6 @@ class NeighboringNodes(object):
 
 
         neighbors = []
-
 
         if ntype == 'SQUARE':
             for i in range (-1 * m, m+1):

@@ -32,7 +32,7 @@ def main():
 
     square_edge = node.find_neighbors(m = 1, ntype= 'SQUARE', i = 14)
     print('Square Edge Neighbors')
-    print(square)
+    print(square_edge)
 
 if __name__ == '__main__':
     main()
