@@ -32,6 +32,11 @@ x - x coordinate of the origin mode, can't be used alongside i.
 y - y coordinate of origin node, can't be used alongside i.
 i - index of origin node, can't be used if x and y are also passed in as arguments.
 
+# Testing
+Future testcases: 
+More robustly test each shape, attempt to pass in invalid parameters, verify that my find_neighbors() logic for mutually exclusive arguments was well defined. 
+
+
 
 
 
