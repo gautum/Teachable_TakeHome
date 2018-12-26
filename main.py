@@ -29,7 +29,6 @@ def main():
     print(diamond)
 
 
-
     square_edge = node.find_neighbors(m = 1, ntype= 'SQUARE', i = 14)
     print('Square Edge Neighbors')
     print(square_edge)

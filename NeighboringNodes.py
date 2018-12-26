@@ -15,7 +15,7 @@ class NeighboringNodes(object):
 
     def build_grid(self):
         # index from 1 - > size
-        #
+
         if (self.size <= 2):
             raise ValueError('The size must be greater that or equal to 3')
 
