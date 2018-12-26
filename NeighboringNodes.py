@@ -15,13 +15,13 @@ class NeighboringNodes(object):
         # index from 1 - > size
         count = 1
 
-        for i in range self.size:
-            for j in range self.size:
+        for i in range (self.size):
+            for j in range (self.size):
                 self.grid[i][j] = Node(i,j,count)
                 count+=1
         if self.debug == True:
-            for i in range self.size:
-                for j in range self.size:
+            for i in range (self.size):
+                for j in range (self.size):
                     print (self.grid[i][j].getValues())
 
 
