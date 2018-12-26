@@ -1,0 +1,36 @@
+## I decided to create a table for the neighboringNode grid object and a separate table for the nodes of each table. Each NeighboringNode 
+would have a unique nn_id and a size. The Node instance have the x,y,i coordinates as well as a primary foreign key nn_id that links to the 
+NeighboringNode. I chose the index to be a primary key as well to minimize the amount of repeated primary key and I thought it would be 
+easier to access each node by index than coordinate.
+
+## Creating a table for Neighboring Node grid
+
+CREATE TABLE IF NOT EXISTS neighboringNode ( 
+	nn_id INTEGER PRIMARY KEY,
+	size INTEGER NOT NULL
+	);
+
+
+
+## Creating a table all nodes in all grids
+
+CREATE TABLE IF NOT EXISTS node (
+	nn_id INTEGER,
+	xCoord INTEGER NOT NULL,
+	yCoord INTEGER NOT NULL,
+	ind INTEGER NOT NULL,
+	PRIMARY KEY (nn_id, ind),
+	FOREIGN KEY(nn_id) REFERENCES neighboringNode(nn_id)
+	ON DELETE CASCADE ON UPDATE NO ACTION
+	);
+
+
+
+## Grab all the nodes for a given grid 
+SELECT * from node where nn_id = 2; 
+
+## Grab 3rd node in the neighboring node grid
+SELECT * from node where nn_id = 1 and ind = 3; 
+
+## Grab a neighboring node and its size
+select * from neighboringNode where nn_id = 2; 
