@@ -1,5 +1,6 @@
 import numpy as np
 from Node import Node
+import itertools
 
 
 class NeighboringNodes(object):
@@ -7,39 +8,38 @@ class NeighboringNodes(object):
     def __init__(self,size,debug):
         self.size = size
         self.debug = debug
-        self.grid = np.empty(shape = (self.size,self.size), dtype = object)
+        self.grid = []
         self.types = ['SQUARE', 'CROSS', 'DIAMOND']
 
 
 
-    def buildGrid(self):
+    def build_grid(self):
         # index from 1 - > size
-        count = 1
+        counter = itertools.count()
+        counter.next()
 
-        for i in range (self.size):
-            for j in range (self.size):
-                self.grid[i][j] = Node(i,j,count)
-                count+=1
+        self.grid = [[Node(i,j,counter.next()) for i in range (self.size)] for j in range(self.size)]
+
         if self.debug == True:
             for i in range (self.size):
                 for j in range (self.size):
                     print (self.grid[i][j].getValues())
 
 
-    def findIndex(self, index):
+    def find_index(self, index):
         if (index > np.power(self.size, 2) or index <= 0):
             raise ValueError("Index out of range")
 
         # flatten array and return index
         return np.reshape(self.grid, (-1,))[index-1].getXYCoords()
 
-    def isOnGrid(self, x, y):
+    def is_on_grid(self, x, y):
         if x < 0  or x >= self.size or y < 0 or y >= self.size:
             return False
         return True
 
 
-    def findNeighbors(self, m, ntype, x = None, y = None, i = None):
+    def find_neighbors(self, m, ntype, x = None, y = None, i = None):
 
         # checks to make sure input is valid
         if ntype not in self.types:
@@ -57,6 +57,8 @@ class NeighboringNodes(object):
 
         if i is not None:
             x, y = self.findIndex(i)
+
+        # if coord is not on grid then throw error
         if not self.isOnGrid(x,y):
             raise ValueError("Coordinates not in grid")
 
@@ -65,36 +67,26 @@ class NeighboringNodes(object):
 
 
         if ntype == 'SQUARE':
-            radius = 1
-            while radius <= m:
-                for i in range(-1 * radius, radius+1):
-                    for j in range (-1 *radius, radius+1):
-                        # dont add origin to neighbors list
-                        if i == 0 and j == 0:
-                            continue
-                        # make sure point is valid
-                        if self.isOnGrid(x + i, y + j):
-                            neighbors.append(self.grid[x+i][y+j].getXYCoords())
-                radius+=1
+            for i in range (-1 * m, m+1):
+                for j in range(-1 * m, m + 1):
+                    if i == 0 and j == 0:
+                        continue
+                    if self.isOnGrid(x+i,y+j):
+                        neighbors.append(self.grid[x + i][y + j].getXYCoords())
+
 
         elif ntype == 'CROSS':
 
-            # go to the right and left
+            # go to the right and left, up and down
             for i in range(-1 * m, m+1):
 
                 if i == 0:
                     continue
-
                 if self.isOnGrid(x + i, y):
                     neighbors.append(self.grid[x+i][y].getXYCoords())
+                if self.isOnGrid(x, y + i):
+                     neighbors.append(self.grid[x][y+i].getXYCoords())
 
-            # go up and down
-            for j in range(-1 * m, m+1):
-                if j == 0:
-                    continue
-
-                if self.isOnGrid(x, y + j):
-                     neighbors.append(self.grid[x][y+j].getXYCoords())
 
         elif ntype == 'DIAMOND':
 

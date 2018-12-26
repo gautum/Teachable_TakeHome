@@ -5,9 +5,9 @@ class Node(object):
         self.i = i
 
 
-    def getValues(self):
+    def get_values(self):
         return self.x, self.y, self.i
 
 
-    def getXYCoords(self):
+    def get_xy_coords(self):
         return self.x,self.y

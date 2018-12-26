@@ -16,15 +16,15 @@ def main():
 
 
 
-    square = node.findNeighbors(m=1, ntype='SQUARE', x=2, y=2)
+    square = node.find_neighbors(m=1, ntype='SQUARE', x=2, y=2)
 
     print(square)
 
-    cross = node.findNeighbors(m=2,ntype='CROSS', x = 3, y = 3)
+    cross = node.find_neighbors(m=2,ntype='CROSS', x = 3, y = 3)
     print('Cross neighbors')
     print(cross)
 
-    diamond = node.findNeighbors(m = 3, ntype='DIAMOND', x = 3, y = 3)
+    diamond = node.find_neighbors(m = 3, ntype='DIAMOND', x = 3, y = 3)
     print('Diamond neighbors')
     print(diamond)
 
