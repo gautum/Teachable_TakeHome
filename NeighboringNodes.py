@@ -26,5 +26,8 @@ class NeighboringNodes(object):
 
 
     def findIndex(self, index):
+        if (index > np.power(self.size, 2) or index <= 0):
+            raise ValueError("Index out of range")
 
-        return np.reshape(self.grid, (-1,))[index].getXYCoords()
+        # flatten array and return index
+        return np.reshape(self.grid, (-1,))[index-1].getXYCoords()

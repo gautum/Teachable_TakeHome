@@ -10,6 +10,13 @@ def main():
 
     node.buildGrid()
 
+    ind = node.findIndex(3)
+    print("found ind 3")
+    print(ind)
+
+
+    ind = node.findIndex(10)
+
 
 
 
