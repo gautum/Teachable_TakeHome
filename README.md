@@ -17,7 +17,6 @@ If the debug flag is given, then for each node in the grid, it's x coordinate, y
 
 
 find_index(i): 
-
 Returns a tuple with the x,y coordinates of the given index or raises value error if not in bounds. 
 
 Params:
