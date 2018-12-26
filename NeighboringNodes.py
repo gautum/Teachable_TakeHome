@@ -1,4 +1,4 @@
-import numpt as np
+import numpy as np
 from Node import Node
 
 
@@ -23,3 +23,8 @@ class NeighboringNodes(object):
             for i in range self.size:
                 for j in range self.size:
                     print (self.grid[i][j].getValues())
+
+
+    def findIndex(self, index):
+
+        return np.reshape(self.grid, (-1,))[index].getXYCoords()

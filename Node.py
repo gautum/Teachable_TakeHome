@@ -7,3 +7,7 @@ class Node(object):
 
     def getValues(self):
         return self.x, self.y, self.i
+
+
+    def getXYCoords(self):
+        return self.x,self.y
