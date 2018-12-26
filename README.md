@@ -22,7 +22,7 @@ Returns a tuple with the x,y coordinates of the given index or raises value erro
 Params:
 i - integer from 1 to n. Note that nodes are organized left to right, top to bottom, so the node in the top left has an index of 1, the node in the bottom right has an index of n.
 
-find_neighbors(m = 1, ntype,  x = None, y = None, i = None):
+find_neighbors(m, ntype,  x = None, y = None, i = None):
 Returns a list of neighbors in the specified shape or raises ValueError if not valid. 
 
 Params :
