@@ -4,7 +4,8 @@ Take Home Assignment for Teachable
 Requirements:
 
 Python 2.7.x
-Numpy install
+
+Numpy installed
 
 To view a sample demo of the application, run main.py.
 
