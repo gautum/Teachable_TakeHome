@@ -8,12 +8,12 @@ def main():
 
     node = NeighboringNodes(7,True)
 
+    print("Building grid")
     node.build_grid()
 
-    # ind = node.findIndex(3)
-    # print("found ind 3")
-    # print(ind)
-
+    ind = node.find_index(3)
+    print("Finding the 3rd node")
+    print(ind)
 
 
     square = node.find_neighbors(m=1, ntype='SQUARE', x=2, y=2)
@@ -28,6 +28,11 @@ def main():
     print('Diamond neighbors')
     print(diamond)
 
+
+
+    square_edge = node.find_neighbors(m = 1, ntype= 'SQUARE', i = 14)
+    print('Square Edge Neighbors')
+    print(square)
 
 if __name__ == '__main__':
     main()

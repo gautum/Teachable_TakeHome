@@ -15,6 +15,10 @@ class NeighboringNodes(object):
 
     def build_grid(self):
         # index from 1 - > size
+        #
+        if (self.size <= 2):
+            raise ValueError('The size must be greater that or equal to 3')
+
         counter = itertools.count()
         counter.next()
 
@@ -56,7 +60,7 @@ class NeighboringNodes(object):
             raise ValueError("Must input some value")
 
         if i is not None:
-            x, y = self.findIndex(i)
+            x, y = self.find_index(i)
 
         # if coord is not on grid then throw error
         if not self.is_on_grid(x,y):
