@@ -27,10 +27,10 @@ Returns a list of neighbors in the specified shape or raises ValueError if not v
 
 Params :
 m- radius of neighborhood shape
-ntype - shape of neighborhood, can be either SQUARE, DIAMOND, CROSS
-x - x coordinate of the origin mode, can't be used alongside i
-y - y coordinate of origin node, can't be used alongside i
-i - index of origin node, can't be used if x and y are also passed in as arguments
+ntype - shape of neighborhood, can be either SQUARE, DIAMOND, CROSS.
+x - x coordinate of the origin mode, can't be used alongside i.
+y - y coordinate of origin node, can't be used alongside i.
+i - index of origin node, can't be used if x and y are also passed in as arguments.
 
 
 
