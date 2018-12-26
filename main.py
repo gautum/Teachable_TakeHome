@@ -6,17 +6,19 @@ from Node import Node
 def main():
 
 
-    node = NeighboringNodes(3,True)
+    node = NeighboringNodes(5,True)
 
     node.buildGrid()
 
-    ind = node.findIndex(3)
-    print("found ind 3")
-    print(ind)
+    # ind = node.findIndex(3)
+    # print("found ind 3")
+    # print(ind)
 
 
-    ind = node.findIndex(10)
 
+    square = node.findNeighbors(m=1, ntype='SQUARE', x=2, y=2)
+
+    print(square)
 
 
 
