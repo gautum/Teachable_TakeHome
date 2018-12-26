@@ -34,11 +34,6 @@ class NeighboringNodes(object):
         return np.reshape(self.grid, (-1,))[index-1].getXYCoords()
 
     def isOnGrid(self, x, y):
-        """
-        :param x: x coordinate in grid
-        :param y: y coordinate in grid
-        :return: true if point is in grid bounds, false otherwise
-        """
         if x < 0  or x >= self.size or y < 0 or y >= self.size:
             return False
         return True
@@ -62,6 +57,9 @@ class NeighboringNodes(object):
 
         if i is not None:
             x, y = self.findIndex(i)
+        if not self.isOnGrid(x,y):
+            raise ValueError("Coordinates not in grid")
+
 
         neighbors = []
 
@@ -78,6 +76,25 @@ class NeighboringNodes(object):
                         if self.isOnGrid(x + i, y + j):
                             neighbors.append(self.grid[x+i][y+j].getXYCoords())
                 radius+=1
+
+        elif ntype == 'CROSS':
+
+            # go to the right and left
+            for i in range(-1 * m, m+1):
+
+                if i == 0:
+                    continue
+
+                if self.isOnGrid(x + i, y):
+                    neighbors.append(self.grid[x+i][y].getXYCoords())
+
+            # go up and down
+            for j in range(-1 * m, m+1):
+                if j == 0:
+                    continue
+
+                if self.isOnGrid(x, y + j):
+                     neighbors.append(self.grid[x][y+j].getXYCoords())
 
         return neighbors
 

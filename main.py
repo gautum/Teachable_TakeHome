@@ -20,6 +20,9 @@ def main():
 
     print(square)
 
+    cross = node.findNeighbors(m=2,ntype='CROSS', x = 3, y = 3)
+    print('Cross neighbors')
+    print(cross)
 
 
 
